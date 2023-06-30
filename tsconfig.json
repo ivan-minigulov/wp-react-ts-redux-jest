@@ -1,31 +1,35 @@
 {
+  "compilerOptions": {
+    //Папка сборки приложения
+    "outDir": "./dist/",
+    //Подсвечивает, если мы не указали тип переменной явно, если тип any - нужно указать явно.
+    "noImplicitAny": true,
+    //Тип (Common JS, ES6, ESnext) в котором пишем код
+    "module": "ESNext",
+    //В какую версию JS будем компиллировать
+    "target": "es5",
+    //Писать конструкции JSX как в React
+    "jsx": "react-jsx",
+    //Компиллятор будет обрабатывать не только TS файлы, но и JS файлы
+    "allowJs": true,
+    //какие импорты: node or classic - в 99% используется node
+    "moduleResolution": "node",
+    //Для использования import вместо comman js (require(), module.exports)
+    "esModuleInterop": true,
+    //Для того чтобы писать import React from 'React'; Вместо import * as React from 'React';
+    "allowSyntheticDefaultImports": true,
+    //Для указания абсолютного пути от корневого каталога
+    // "baseUrl": "./src",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./src/*"]
+    }
+  },
+  //Так как выше в "compilerOptions" "module": "ESNext", то нужен этот блок, чтобы работали export/import
+  //Если в "compilerOptions" "module": "CommonJS", то этот блок не нужен
+  "ts-node": {
     "compilerOptions": {
-      //Папка сборки приложения  
-      "outDir": "./dist/",
-      //Подсвечивает, если мы не указали тип переменной явно, если тип any - нужно указать явно.
-      "noImplicitAny": true,
-      //Тип (Common JS, ES6, ESnext) в котором пишем код
-      "module": "ESNext",
-      //В какую версию JS будем компиллировать
-      "target": "es5",
-      //Писать конструкции JSX как в React
-      "jsx": "react-jsx",
-      //Компиллятор будет обрабатывать не только TS файлы, но и JS файлы
-      "allowJs": true,
-      //какие импорты: node or classic - в 99% используется node
-      "moduleResolution": "node",
-      //Для использования import вместо comman js (require(), module.exports)
-      "esModuleInterop": true,
-      //Для того чтобы писать import React from 'React'; Вместо import * as React from 'React';
-      "allowSyntheticDefaultImports": true,
-      //Для указания абсолютного пути от корневого каталога
-      "baseUrl": "."
-    },
-    //Так как выше в "compilerOptions" "module": "ESNext", то нужен этот блок, чтобы работали export/import
-    //Если в "compilerOptions" "module": "CommonJS", то этот блок не нужен
-    "ts-node": {
-        "compilerOptions": {
-          "module": "CommonJS"
-        }
-      },
+      "module": "CommonJS"
+    }
   }
+}
