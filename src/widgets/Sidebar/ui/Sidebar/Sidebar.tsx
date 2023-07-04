@@ -1,4 +1,3 @@
-import { Themes, useTheme } from 'app/provider/ThemeProvider'
 import React, { useState } from 'react'
 import { classNames } from 'shared/lib/classNames/ClassName'
 import cls from './Sidebar.module.scss'

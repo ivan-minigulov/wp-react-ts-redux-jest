@@ -2,6 +2,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import webpack from 'webpack'
 import { BuildOptions } from './types/config'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
 export function buildPlugins({
   paths,
@@ -24,5 +25,8 @@ export function buildPlugins({
     //Чтобы обновления изменений в коде при разработке вносились на сайт без перезагрузки страницы,
     //сейчас этот плагин входит в сборку webpack по умолчанию с 5 версии
     // new webpack.HotModuleReplacementPlugin(),
+
+    // Для наглядного Webpack Bundle
+    new BundleAnalyzerPlugin({ openAnalyzer: false }),
   ]
 }

@@ -83,6 +83,11 @@ export default {
     'node',
   ],
 
+  // Для работы jest с css/scss
+  moduleNameMapper: {
+    '\\.s?css$': 'identity-obj-proxy',
+  },
+
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   // moduleNameMapper: {},
 
@@ -119,6 +124,9 @@ export default {
   // The root directory that Jest should scan for tests and modules within
   rootDir: '../../',
 
+  //Для того чтобы в файлах jest работали абсолютные импорты
+  modulePath: ['<rootDir>src'],
+
   // A list of paths to directories that Jest should use to search for files in
   // roots: [
   //   "<rootDir>"
@@ -129,6 +137,9 @@ export default {
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
   // setupFiles: [],
+
+  //Для Работы с @testing-library/jest-dom
+  setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts'],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   // setupFilesAfterEnv: [],
