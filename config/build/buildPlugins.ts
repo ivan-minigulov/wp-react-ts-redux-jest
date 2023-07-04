@@ -8,7 +8,7 @@ export function buildPlugins({
   paths,
   isDev,
 }: BuildOptions): webpack.WebpackPluginInstance[] {
-  return [
+  const plugins = [
     // HtmlWebpackPlugin -  Для создания html файла сборки,
     // template - для указания webpack путь до index.html, чтобы он использовал его как шаблон.
     new HtmlWebpackPlugin({ template: paths.html }),
@@ -22,11 +22,17 @@ export function buildPlugins({
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
     }),
-    //Чтобы обновления изменений в коде при разработке вносились на сайт без перезагрузки страницы,
-    //сейчас этот плагин входит в сборку webpack по умолчанию с 5 версии
-    // new webpack.HotModuleReplacementPlugin(),
-
-    // Для наглядного Webpack Bundle
-    new BundleAnalyzerPlugin({ openAnalyzer: false }),
   ]
+
+  if (isDev)
+    plugins.push(
+      //Чтобы обновления изменений в коде при разработке вносились на сайт без перезагрузки страницы,
+      //сейчас этот плагин входит в сборку webpack по умолчанию с 5 версии
+      // new webpack.HotModuleReplacementPlugin(),
+
+      // Для наглядного Webpack Bundle
+      new BundleAnalyzerPlugin({ openAnalyzer: false })
+    )
+
+  return plugins
 }
